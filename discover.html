@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="KEŞİF ile bugünün küçük keşiflerini filtrele ve kaydet." />
+    <title>Keşfet — KEŞİF</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="KEŞİF ana sayfa">KEŞİF<span>•</span></a>
+      <nav aria-label="Ana menü">
+        <a href="index.html#bugun">Bugün</a>
+        <a href="discover.html" aria-current="page">Keşfet</a>
+        <a href="#kaydedilenler">Kaydettiklerim <span class="saved-count">0</span></a>
+      </nav>
+      <a class="profile-button" href="index.html" aria-label="Ana sayfaya dön">M</a>
+    </header>
+
+    <main>
+      <section class="explore-hero" aria-labelledby="explore-title">
+        <p class="eyebrow">SANA AÇIK OLAN ALAN</p>
+        <h1 id="explore-title">Merakının peşinden<br /><em>git.</em></h1>
+        <p>İstersen iki dakikalık bir mola, istersen daha derine inecek yeni bir konu seç. Bugünün ritmini sen belirle.</p>
+      </section>
+
+      <section class="explorer" aria-labelledby="results-title">
+        <div class="explorer-toolbar">
+          <label class="wide-search">
+            <span class="sr-only">Keşiflerde ara</span>
+            <input id="explore-search" type="search" placeholder="Ne keşfetmek istiyorsun?" autocomplete="off" />
+            <span aria-hidden="true">⌕</span>
+          </label>
+          <label class="duration-select" for="duration-filter">Ayırabileceğim süre
+            <select id="duration-filter">
+              <option value="all">Fark etmez</option>
+              <option value="5">5 dakika veya az</option>
+              <option value="10">10 dakika veya az</option>
+              <option value="long">Daha uzun bir şey</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="category-filters" aria-label="Kategori filtreleri">
+          <button type="button" class="filter-chip active" data-category="all">Hepsi</button>
+          <button type="button" class="filter-chip" data-category="Şehir & yaşam">Şehir & yaşam</button>
+          <button type="button" class="filter-chip" data-category="Kültür">Kültür</button>
+          <button type="button" class="filter-chip" data-category="Gündem">Gündem</button>
+          <button type="button" class="filter-chip" data-category="Öğrenme">Öğrenme</button>
+          <button type="button" class="filter-chip" data-category="İyi olma hâli">İyi olma hâli</button>
+        </div>
+
+        <div class="result-heading">
+          <div>
+            <p class="eyebrow">BUGÜN İÇİN</p>
+            <h2 id="results-title">Sana açık keşifler</h2>
+          </div>
+          <p id="result-summary" class="result-summary" aria-live="polite"></p>
+        </div>
+
+        <div class="cards explore-grid" id="explore-cards"></div>
+        <p id="explore-empty" class="empty-state" hidden>Bu filtrelerle eşleşen bir keşif bulamadık. Başka bir yol deneyelim.</p>
+      </section>
+
+      <section class="saved-section" id="kaydedilenler" aria-labelledby="saved-title">
+        <div class="section-heading compact">
+          <div>
+            <p class="eyebrow">SONRA BAKMAK İÇİN</p>
+            <h2 id="saved-title">Kaydettiklerin</h2>
+          </div>
+          <span class="saved-note">Tarayıcında saklanır</span>
+        </div>
+        <div class="saved-list" id="saved-list"></div>
+      </section>
+    </main>
+
+    <dialog id="detail-dialog" class="detail-dialog">
+      <button class="dialog-close" type="button" aria-label="Kapat">×</button>
+      <div id="dialog-content"></div>
+    </dialog>
+
+    <footer>
+      <a class="brand" href="index.html">KEŞİF<span>•</span></a>
+      <p>Her gelişinde başka bir ihtimal.</p>
+      <p class="footer-meta">Türkiye'den başlayan günlük keşif alanı</p>
+    </footer>
+    <script src="discoveries.js"></script>
+    <script src="explore.js"></script>
+  </body>
+</html>

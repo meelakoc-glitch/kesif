@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="KEŞİF — o an ne istiyorsan onunla buluştuğun günlük keşif alanı."
+    />
+    <title>KEŞİF — Bugün neye ihtiyacın var?</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#ana-sayfa" aria-label="KEŞİF ana sayfa">KEŞİF<span>•</span></a>
+      <nav aria-label="Ana menü">
+        <a href="#bugun">Bugün</a>
+        <a href="discover.html">Keşfet</a>
+        <a href="#kaydedilenler">Kaydettiklerim <span class="saved-count">0</span></a>
+      </nav>
+      <button class="profile-button" type="button" aria-label="Profilini aç">M</button>
+    </header>
+
+    <main id="ana-sayfa">
+      <section class="hero" aria-labelledby="hero-title">
+        <p class="eyebrow">12 KASIM · İSTANBUL</p>
+        <h1 id="hero-title">Bugün kendin için<br /><em>ne istiyorsun?</em></h1>
+        <p class="hero-copy">
+          KEŞİF, moduna ve ayırabildiğin zamana göre sana küçük ama iyi gelen bir rota çıkarır.
+        </p>
+
+        <div class="mood-picker" aria-label="Şu anki ihtiyacını seç">
+          <button class="mood-pill active" type="button" data-mood="discover">Bir şey keşfet</button>
+          <button class="mood-pill" type="button" data-mood="quick">5 dakikam var</button>
+          <button class="mood-pill" type="button" data-mood="informed">Gündemden kopma</button>
+          <button class="mood-pill" type="button" data-mood="grow">Kendime yatırım</button>
+        </div>
+
+        <div class="prompt-card" id="mood-prompt" aria-live="polite">
+          <span class="prompt-mark">✦</span>
+          <p><strong>Bugünün küçük kaçamağı:</strong> Şehrinin hiç gitmediğin bir semtinde yürüyüş rotası çıkar.</p>
+          <button class="refresh-button" type="button" id="refresh-prompt">
+            <span aria-hidden="true">↻</span> Bana başka bir şey ver
+          </button>
+        </div>
+      </section>
+
+      <section class="daily-strip" id="bugun" aria-label="Günün kısa bilgileri">
+        <article>
+          <span class="strip-label">GÜNÜN SORUSU</span>
+          <p>Son zamanlarda seni şaşırtan en küçük şey neydi?</p>
+        </article>
+        <article>
+          <span class="strip-label">MİNİ ARAÇ</span>
+          <p>25 dakika odaklan, 5 dakika nefes al.</p>
+          <button type="button" class="mini-action" id="focus-button">Odaklanmaya başla</button>
+        </article>
+        <article class="focus-status" aria-live="polite">
+          <span class="strip-label">SENİN ALANIN</span>
+          <p id="focus-text">Bugün için kendine ayırdığın ilk dakika burada başlayabilir.</p>
+        </article>
+      </section>
+
+      <section class="feed" id="kesfet" aria-labelledby="feed-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">SANA GÖRE SEÇİLDİ</p>
+            <h2 id="feed-title">Bugünün keşifleri</h2>
+          </div>
+          <label class="search-box">
+            <span class="sr-only">Keşiflerde ara</span>
+            <input id="search" type="search" placeholder="Bir konu ara" autocomplete="off" />
+            <span aria-hidden="true">⌕</span>
+          </label>
+        </div>
+
+        <div class="cards" id="discovery-cards"></div>
+        <p class="empty-state" id="empty-state" hidden>Burada henüz eşleşen bir keşif yok. Başka bir kelime dene.</p>
+      </section>
+
+      <section class="saved-section" id="kaydedilenler" aria-labelledby="saved-title">
+        <div class="section-heading compact">
+          <div>
+            <p class="eyebrow">SONRA BAKMAK İÇİN</p>
+            <h2 id="saved-title">Kaydettiklerin</h2>
+          </div>
+          <span class="saved-note">Tarayıcında saklanır</span>
+        </div>
+        <div class="saved-list" id="saved-list">
+          <p class="saved-empty">Beğendiğin bir keşfi kaydet; sonra tam burada bulursun.</p>
+        </div>
+      </section>
+    </main>
+
+    <dialog id="detail-dialog" class="detail-dialog">
+      <button class="dialog-close" type="button" aria-label="Kapat">×</button>
+      <div id="dialog-content"></div>
+    </dialog>
+
+    <footer>
+      <a class="brand" href="#ana-sayfa">KEŞİF<span>•</span></a>
+      <p>Her gelişinde başka bir ihtimal.</p>
+      <p class="footer-meta">Türkiye'den başlayan günlük keşif alanı</p>
+    </footer>
+
+    <script src="discoveries.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
